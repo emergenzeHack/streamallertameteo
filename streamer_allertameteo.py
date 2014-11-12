@@ -9,10 +9,10 @@ import sqlite3 as lite
 
 sqlite3file='stream_allertameteo.sqlite'
 
-CONSUMER_KEY = '7lTvtNwLaDKTC0E0owLQlQ'
-CONSUMER_SECRET = 'PWnxtLd7QcerU5BkvflrJvdZb6hmFkIPyvygevNvkg'
-ACCESS_TOKEN = '1722659330-TjOcHVgpJtnm07IJq0SQlYex9EH8SrtHCBiPQNn'
-ACCESS_TOKEN_SECRET = 'aacyGGwNs33fcRtztVdjDgXcuCJWIVSTgB7VZzkM4wFMO'
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
+ACCESS_TOKEN = ''
+ACCESS_TOKEN_SECRET = ''
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
