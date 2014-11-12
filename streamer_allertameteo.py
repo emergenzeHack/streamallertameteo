@@ -3,9 +3,6 @@ import tweepy
 import webbrowser
 import sqlite3 as lite
 
-# Query terms
-
-
 
 sqlite3file='stream_allertameteo.sqlite'
 
@@ -44,7 +41,7 @@ class CustomStreamListener(tweepy.StreamListener):
 
 		
 
-
+# Query terms
 		
 		
 track_meteo=['#allertameteo','#allertameteoLIG',
@@ -73,3 +70,6 @@ streaming_api = tweepy.streaming.Stream(auth, CustomStreamListener(), timeout=60
 print >> sys.stderr, 'Filtering the public timeline for "%s"' % (' '.join(track_meteo),)
 
 streaming_api.filter( track=track_meteo,languages = ["it"])
+
+# referenced example
+# http://stackoverflow.com/questions/9434205/tweepy-stream-to-sqlite-database-invalid-synatx
