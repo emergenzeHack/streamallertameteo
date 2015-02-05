@@ -1,12 +1,20 @@
 streamallertameteo
 ==================
 
-Parsing example using tweepy python library.
+Demostrative Python code to stream users or hashtag or keywords by using tweepy python library.
+Need to create a Twitter Application on dev.twitter.com in read and write permission.
+The code is cross platform and require Python ( > 2.7 ) with tweepy libraries installed.
+Could be launched using:
 
-Create a twitter application read ( write) permission.
+* Creating a server service ( two simple code as template are in master)
 
-Launched using nohup command on linux console.
+* nohup command on linux console.  es : nohup python streamer_allertameteo.py 
+
+A sqlite DB  will be create in directory. 
+
 
 Author 
 
-Alfonso crisci
+Alfonso Crisci
+
+#emergenzehack

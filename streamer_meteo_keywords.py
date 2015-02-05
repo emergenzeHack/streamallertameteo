@@ -7,12 +7,13 @@ import sqlite3 as lite
 
 
 
-sqlite3file='stream_allertameteo.sqlite'
+sqlite3file='stream_meteo_keywords.sqlite'
 
 CONSUMER_KEY = ''
 CONSUMER_SECRET = ''
 ACCESS_TOKEN = ''
 ACCESS_TOKEN_SECRET = ''
+
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
@@ -26,8 +27,8 @@ class CustomStreamListener(tweepy.StreamListener):
     def on_status(self, status):
 
         try:
-            
-            cur.execute("INSERT INTO TWEETS VALUES(?,?,?,?,?,?,?)", (status.text, status.author.screen_name, status.created_at, status.source,status.id_str,str(status.retweet_count),str(status.favorited),))
+           
+            cur.execute("INSERT INTO TWEETS VALUES(?,?,?,?,?,?,?)", (status.text, status.author.screen_name, status.created_at, status.source,status.id_str,str(status.retweet_count),str(status.favorited)))
             con.commit()
 
         except Exception, e:
@@ -47,30 +48,41 @@ class CustomStreamListener(tweepy.StreamListener):
 
 		
 		
-track_meteo=['#allertameteo',
-       '#allertameteoLIG',
-	'#allertameteoTOS',
-	'#allertameteoPM',
-	'#allertameteoLAZ',
-	'#allertameteoER',
-	'#allertameteoMAR',
-	'#allertameteoUM',
-	'#allertameteoABR',
-	'#allertameteoMOL',
-	'#allertameteoCAM',
-	'#allertameteoBAS',
-	'#allertameteoPUG',
-	'#allertameteoCAL',
-	'#allertameteoSIC',
-	'#allertameteoSAR',
-	'#allertameteoLOM',
-	'#allertameteoVEN',
-	'#allertameteoTAA',
-	'#allertameteoFVG',
-	'#allertameteoTS']
+track_meteo=['#neve',
+	      '#fuorinevica',
+	      '#ghiaccio',
+	      '#freddo',
+	      '#gelo',
+	      '#tormenta',
+             '#maltempo',
+             '#meteo',
+             '#pioggia',
+             '#previsioni',
+             '#temporali',
+             '#temporale',
+             '#esondazione',
+             '#grandine',
+             '#tornado',
+             '#caldo',
+             '#alluvione',
+             '#frana',
+             '#alluvioni',
+             '#brina',
+             '#fulmini',
+             '#tornado',
+             '#vento',
+             '#mareggiata'
+             '#bombaacqua',
+             '#bombadacqua',
+             '#afa',
+             '#diluvio',
+             '#allagamento',
+             '#rovesci'
+        
+ ]
 			 
 streaming_api = tweepy.streaming.Stream(auth, CustomStreamListener(), timeout=60)
 
-print >> sys.stderr, 'Filtering the public timeline for "%s"' % (' '.join(track_meteo),)
+print >> sys.stderr, 'Filtering the public timeline for "%s\n"' % (' '.join(track_meteo),)
 
 streaming_api.filter( track=track_meteo,languages = ["it"])
